@@ -1,0 +1,205 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+
+void update () { printf (" \033[H\033[J") ;}
+void gotoxy (int x ,int y ) { printf ("\033[%d;%dH",x,y) ;}
+
+void gouter_vache()
+{
+    printf("\n                                   ^__^\n\
+                                   (00)\\_______\n\
+        ___________________        (__)\\       )\\/\\\n\
+         |               |             ||____w |\n\
+         |               |             ||     ||\n\n");      
+    gotoxy(11,1);
+    printf("        MMHH j'ai très faim, c'est l'heure du goûter\n");
+    sleep(2);
+    update();
+
+    printf("                                   ^__^\n\
+               (*)                 (oo)\\_______\n\
+        _____(*)_(*)_______        (__)\\       )\\/\\\n\
+         |               |             ||____w |\n\
+         |               |             ||     ||\n");
+    gotoxy(9,1);
+    printf("        OHH des COOKIES !                           \n");
+    sleep(2);
+    update();
+
+    printf("                                ^__^\n\
+               (*)              (oo)\\_______\n\
+        _____(*)_(*)_______     (__)\\       )\\/\\\n\
+         |               |          ||____w |\n\
+         |               |          ||     ||\n");
+    gotoxy(11,1);
+    printf("        ...             \n");
+    sleep(1);
+    update();
+
+    printf("                             ^__^\n\
+               (*)           (oo)\\_______\n\
+        _____(*)_(*)_______  (__)\\       )\\/\\\n\
+         |               |       ||____w |\n\
+         |               |       ||     ||\n");
+    gotoxy(11,1);
+    printf("        ...             \n");
+    sleep(1);
+    update();
+
+    printf("                            ^__^\n\
+                            (00)\n\
+                            (__)\\\n\
+               (*)          /\\  /\\\n\
+        _____(*)_(*)_______/  \\ w \\\n\
+         |               |     \\___\\\n\
+         |               |     /   / \n");
+    gotoxy(11,1);
+    printf("     Hop !\n");    
+    sleep(6);
+    update();
+
+    printf("                              ^__^\n\
+                              (..)\n\
+                              (__)\n\
+                   (*)3======  U  \\\n\
+           ______(*)_(*)_____ (    |\n\
+            |              |  (    |\n\
+            |          3===|==_____)/\\\n");
+    gotoxy(11,1);
+    printf("     Je vais me régaler MIAM\n");
+    sleep(2);
+    update();
+
+    printf("                               ^__^\n\
+                               ($$)\n\
+                            / (o  )\\\n\
+                           =====    \\\n\
+           ______(*)_(*)_____ (      |\n\
+            |              |  (      |\n\
+            |          3===|==_______)/\\/\\\n");
+    gotoxy(11,1);
+    printf("     Slurp...               \n");
+    sleep(3);
+    update();
+
+    printf("                               ^__^\n\
+                               (..)\n\
+                              (___)\\\n\
+                   3==========  U   \\\n\
+           ______(*)_(*)_____ (      |\n\
+            |              |  (      |\n\
+            |          3===|==_______)/\\/\\\n");
+    gotoxy(11,1);
+    printf("     Encore !\n");
+    sleep(2);
+    update();
+
+    printf("                               ^___^\n\
+                               ($$ )\n\
+                            / (o   )\\\n\
+                           =====     \\\n\
+           __________(*)_____ (       |\n\
+            |              |  (       |\n\
+            |          3===|==________)/\\/\\\n");
+    gotoxy(11,1);
+    printf("     Slurp...\n");
+    sleep(2);
+    update();
+
+    printf("                               ^___^\n\
+                               (.. )\n\
+                              (____)\\\n\
+                       3======= U    \\\n\
+           __________(*)_____ (       |\n\
+            |              |  (       |\n\
+            |          3===|==________)/\\/\\\n");
+    gotoxy(11,1);
+    printf("     Allez un ptit dernier !\n");
+    sleep(2);
+    update();
+
+    printf("                               ^____^\n\
+                               ($$  )\n\
+                            / (O     )\\\n\
+                           =====       \\\n\
+           __________________ (         |\n\
+            |              |  (         |\n\
+            |          3===|== _________)/\\/\\/\\\n");
+    gotoxy(11,1);
+    printf("     Slurp...               \n");
+    sleep(3);
+    update();
+
+    printf("                                    ^______^\n\
+                                     ( OO )\n\
+                                     ( .. )\\______________\n\
+                                     (____)                \\ /\\  /\n\
+           __________________              \\| |            )/  \\/\n\
+            |              |                | |__________| |\n\
+            |              |                | |          | |\n"); 
+                                                                                         
+    gotoxy(11,1);
+    printf("     OH non... Je suis devenue énorme... :(\n");
+    sleep(4);
+    update();
+
+    printf("                                                      ^______^\n\
+                                                       ( oo )\n\
+                                      ________________/( .. )\n\
+                              \\  /\\  /                 (____)\n\
+           __________________  \\/  \\(             | |//\n\
+            |              |         | |__________| |\n\
+            |              |         | |          | |\n");
+    gotoxy(11,1);
+    printf("     Il est temps maintenant de faire du sport !\n");
+    sleep(3);
+    update();
+
+    printf("                                                          ^______^\n\
+                                                           ( ^^ )\n\
+                                          ________________/( .. )\n\
+                                  \\  /\\  /                 (____)\n\
+           __________________      \\/  \\(             | |//\n\
+            |              |             | |__________| |\n\
+            |              |             | |          | |\n");
+    gotoxy(11,1);
+    printf("    ...                                        \n");
+    sleep(1);
+    update();
+
+    printf("                                                             ^______^\n\
+                                                              ( ^^ )\n\
+                                             ________________/( .. )\n\
+                                     \\  /\\  /                 (____)\n\
+           __________________         \\/  \\(             | |//\n\
+            |              |                | |__________| |\n\
+            |              |                | |          | |\n");
+    gotoxy(11,1);
+    printf("    ...\n");
+    sleep(1);
+    update();
+    
+    printf("                                                                ^______^\n\
+                                                                 ( ^^ )\n\
+                                                ________________/( .. )\n\
+                                        \\  /\\  /                 (____)\n\
+           __________________            \\/  \\(             | |//\n\
+            |              |                   | |__________| |\n\
+            |              |                   | |          | |\n");
+    gotoxy(11,1);
+    printf("    ...\n");
+    sleep(2);
+    update();
+
+
+    
+}
+
+int main(int argc, char *arg[])
+{
+    gouter_vache();
+    return 0;
+}
