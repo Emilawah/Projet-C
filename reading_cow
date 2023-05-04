@@ -4,46 +4,49 @@
 #include <time.h>
 #include <unistd.h>
 
-
+#define TAILLEMAX 1000
 
 void update () { printf (" \033[H\033[J") ;}
 
 
-void lire_vache(char *fich)
+int main(int argc, char * arg[])
 {
     FILE* fichier = NULL;
-    char caractere_actuel[100];
-    fichier = fopen(fich, "r");
-    char chaine[]= "";
+    fichier = fopen(arg[1], "r");
+    char texte_f[TAILLEMAX]="";
+    char caractere;
+    char chaine[TAILLEMAX]="";
+
 
     if (fichier != NULL)
     {
-        int i = 0;
-        while ((fgets(caractere_actuel[i],1,fichier) != NULL))
+        fgets(texte_f, TAILLEMAX, fichier);
+        for (int i=0 ; i<strlen(texte_f) ; i++)
         {
-            caractere_actuel[i] = fgetc(fichier);
-            printf("\n\
-                %s        \n\
-                     \n\
-                      \\    ^__^\n\
-                       \\   (00)\\_______\n\
-                           (__)\\       )\\/\\\n\
-                            %c  ||____w |\n\
-                               ||     ||\n", chaine, caractere_actuel[i]);
-            sleep(1);
             update();
-            chaine[i]=caractere_actuel[i];
-            i++;
-            //printf("%c\n", caractere_actuel[i]);
-        } ;
-        
-        fclose(fichier);
-    }
-}
+            caractere = texte_f[i];
+            strncat(chaine, &texte_f[i],1);
+            for (int k = 0 ; k<strlen(chaine)+4; k++)
+            {
+            printf("-");
+            }
+            printf("\n");
+            printf("< %s >\n", chaine);
+            for (int k = 0 ; k<strlen(chaine)+4; k++)
+            {
+            printf("-");
+            }
+            printf(" \n           \\    ^__^\n\
+            \\   (00)\\________\n\
+                (__)\\        )\\/\\\n\
+                 %c  ||_____w_|\n\
+                    ||      ||\n\n",  caractere);
+            sleep(1);
 
-int main(int argc, char * arg[])
-{
-    char *fich = arg[1];
-    lire_vache(fich);
+        }
+
+    }
+    fclose(fichier);
+
     return 0;
 }
