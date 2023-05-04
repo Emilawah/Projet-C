@@ -1,0 +1,49 @@
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+
+
+
+void update () { printf (" \033[H\033[J") ;}
+
+
+void lire_vache(char *fich)
+{
+    FILE* fichier = NULL;
+    char caractere_actuel[100];
+    fichier = fopen(fich, "r");
+    char chaine[]= "";
+
+    if (fichier != NULL)
+    {
+        int i = 0;
+        while ((fgets(caractere_actuel[i],1,fichier) != NULL))
+        {
+            caractere_actuel[i] = fgetc(fichier);
+            printf("\n\
+                %s        \n\
+                     \n\
+                      \\    ^__^\n\
+                       \\   (00)\\_______\n\
+                           (__)\\       )\\/\\\n\
+                            %c  ||____w |\n\
+                               ||     ||\n", chaine, caractere_actuel[i]);
+            sleep(1);
+            update();
+            chaine[i]=caractere_actuel[i];
+            i++;
+            //printf("%c\n", caractere_actuel[i]);
+        } ;
+        
+        fclose(fichier);
+    }
+}
+
+int main(int argc, char * arg[])
+{
+    char *fich = arg[1];
+    lire_vache(fich);
+    return 0;
+}
