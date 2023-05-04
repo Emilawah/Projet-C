@@ -1,0 +1,244 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+#include <unistd.h>
+
+// variables globales
+int stock = 5;
+int fitness = 5;
+int lunchfood;
+
+void update () { printf (" \033[H\033[J") ;}
+
+void aff_score(int score)
+{
+    char chaine[1000]="";
+    FILE * fichier = fopen("score.txt", "a+");
+    fprintf(fichier, "%d\n", score);
+    fgets(chaine, 1000,fichier);
+    int record = 0;
+    while (fgets(chaine, 1000,fichier)!=NULL)
+    {
+        for (int i =0 ; i<strlen(chaine); i++)
+        {
+            if (chaine[i]>=record)
+            {
+                record = chaine[i];
+            }
+        }
+
+    }
+    printf("Meilleur score : %d\n\n", record);
+
+    fclose(fichier);
+}
+
+int randInRange(int min, int max)
+{
+  static int initialized = 0;
+  if (!initialized) {
+    srand(time(NULL));
+    initialized = 1;
+  }
+  return min + (int) (rand() / ((double) (RAND_MAX) + 1.0) * (max - min + 1));
+}
+
+void affiche_vache(char *etat)
+{
+    //affiche la vache en pleine forme
+    if (strcmp(etat,"2")==0)
+    {
+        printf("               ^_____^\n\
+                (♥ ♥)\n\
+            w   (___)    w\n\
+            \\  /     \\  /\n\
+             \\/(     )\\/\n\
+               (  w  )\n\
+               (_____)\n\
+               ||   ||\n\
+               ||   ||\n\
+     __________W____W____________________\n\n\n");
+    }
+    // affiche la vache qui ne se sent pas bien
+    else if (strcmp(etat, "1")==0)
+    {
+        printf("               ◜^_____^◝\n\
+                 (◡ ◡)\n\
+                 (___)\n\
+                /|   |\\\n\
+               / (   ) \\\n\
+               \\ ( w ) /\n\
+                m(___)m\n\
+                 || ||\n\
+                 || ||\n\
+     ____________W__W____________________\n\n\n");
+    }
+    // affiche la vache décedée 
+    else if (strcmp(etat, "0")==0)
+    {
+        printf("\n\
+                                /\\       Ɛ===3\n\
+                 ^_____^     ¦◠◠◠◠\\◠◠◠◠◠◠◠¦      M\n\
+          Ɛ===3   (X X)   Ɛ==¦     m      ¦==3  ||\n\
+    ____Ɛ====3____(_o_)______¦◡◡◡◡◡◡◡◡◡◡◡◡¦_____||_______\n\n\n");
+    }
+
+}
+
+
+
+int stock_upadate(int stock, int lunchfood)
+{
+    int crop = randInRange(-3,3);
+    stock = (stock-lunchfood)+crop;
+
+    if (stock < 0)
+    {
+        return 0;
+    }
+    if (stock > 10)
+    {
+        return 10;
+    }
+    else
+    {
+        return stock;
+    }
+}
+
+
+int fitness_update(int lunchfood)
+{
+    int digestion = randInRange(-3,0);
+    fitness = (fitness+lunchfood)+digestion;
+    return fitness;
+}
+
+
+int main (int agrc, char * arg[])
+{
+    // initialise le generateur de nombres aléatoires
+    time_t t;
+    srand((unsigned) time(&t));
+
+    char *etat = arg[1];
+
+    int duree_de_vie = 0;
+
+
+    affiche_vache("2");
+    printf("Votre stock de nourriture : %d\n\n", stock);
+    printf("Entrez une quantité de nourriture : ");
+    scanf("%d", &lunchfood);
+    update();
+
+    while (lunchfood > stock || lunchfood < 0)
+    {
+       printf("Votre stock de nourriture : %d\n\n", stock);
+       printf("Entrez une quantité de nourriture : ");  
+       scanf("%d", &lunchfood);
+    }
+
+    while (fitness >= 0 && fitness <= 10)
+    {
+        stock = stock_upadate(stock, lunchfood);
+        fitness = fitness_update(lunchfood);
+
+
+        if (fitness>=4 && fitness <=6)
+        {
+            affiche_vache("2");
+            printf("Votre stock de nourriture : %d\n\n", stock);
+            printf("Entrez une quantité de nourriture : ");
+            scanf("%d", &lunchfood);
+
+
+            while (lunchfood > stock || lunchfood < 0)
+            {
+                printf("Votre stock de nourriture : %d\n\n", stock);
+                printf("Entrez une quantité de nourriture : ");  
+                scanf("%d", &lunchfood);
+            }
+            update();
+            duree_de_vie++;
+        }
+
+
+        if (fitness >=1 && fitness <=3)
+        {
+            affiche_vache("1");
+            printf("Votre stock de nourriture : %d\n\n", stock);
+            printf("Entrez une quantité de nourriture : ");
+            scanf("%d", &lunchfood);
+
+    
+            while (lunchfood > stock || lunchfood < 0)
+            {
+                printf("Votre stock de nourriture : %d\n\n", stock);
+                printf("Entrez une quantité de nourriture : ");  
+                scanf("%d", &lunchfood);
+            }
+            update();
+            duree_de_vie++;
+
+        }
+
+
+        if (fitness >=7 && fitness <=9)
+        {
+            affiche_vache("1");
+            printf("Votre stock de nourriture : %d\n\n", stock);
+            printf("Entrez une quantité de nourriture : ");
+            scanf("%d", &lunchfood);
+
+           
+        while (lunchfood > stock || lunchfood < 0)
+            {
+                printf("Votre stock de nourriture : %d\n\n", stock);
+                printf("Entrez une quantité de nourriture : ");  
+                scanf("%d", &lunchfood);
+            }
+
+            duree_de_vie++;
+            update();
+            
+        }
+    }
+    update();
+    affiche_vache("0");
+    printf("Vous avez tenu %d tours\n\n", duree_de_vie);
+    int score = duree_de_vie;
+    aff_score(score);
+
+    // BONUS
+    // int score = duree_de_vie;
+    // char answer1[2];
+    // char answer2[2];
+
+    // printf("Voulez vous rejouer (oui : y | non : n) ? ");
+    // scanf("%c", &answer1);
+    // if (answer1 == "y")
+    // {
+    //    int main();
+    // }
+    // else if (answer1 == "n")
+    // {
+    //     printf("Afficher les scores (oui : y | non : n) ? ");
+    //     scanf("%c",&answer2);
+    //     if (answer2 == "y")
+    //     {
+    //         aff_score(score);
+    //     }
+    //     else if (answer2 == "n")
+    //     {
+    //         printf("Merci d'avoir joué à Tamagoshi !");
+    //     }
+
+    // // }
+   
+
+
+
+    return 0;
+}
