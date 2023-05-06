@@ -4,6 +4,8 @@
 #include <time.h>
 #include <unistd.h>
 
+#define TAILLE 1000
+
 // variables globales
 int stock = 5;
 int fitness = 5;
@@ -11,28 +13,6 @@ int lunchfood;
 
 void update () { printf (" \033[H\033[J") ;}
 
-void aff_score(int score)
-{
-    char chaine[1000]="";
-    FILE * fichier = fopen("score.txt", "a+");
-    fprintf(fichier, "%d\n", score);
-    fgets(chaine, 1000,fichier);
-    int record = 0;
-    while (fgets(chaine, 1000,fichier)!=NULL)
-    {
-        for (int i =0 ; i<strlen(chaine); i++)
-        {
-            if (chaine[i]>=record)
-            {
-                record = chaine[i];
-            }
-        }
-
-    }
-    printf("Meilleur score : %d\n\n", record);
-
-    fclose(fichier);
-}
 
 int randInRange(int min, int max)
 {
@@ -193,12 +173,12 @@ int main (int agrc, char * arg[])
             scanf("%d", &lunchfood);
 
            
-        while (lunchfood > stock || lunchfood < 0)
-            {
-                printf("Votre stock de nourriture : %d\n\n", stock);
-                printf("Entrez une quantité de nourriture : ");  
-                scanf("%d", &lunchfood);
-            }
+            while (lunchfood > stock || lunchfood < 0)
+                {
+                    printf("Votre stock de nourriture : %d\n\n", stock);
+                    printf("Entrez une quantité de nourriture : ");  
+                    scanf("%d", &lunchfood);
+                }
 
             duree_de_vie++;
             update();
@@ -208,37 +188,7 @@ int main (int agrc, char * arg[])
     update();
     affiche_vache("0");
     printf("Vous avez tenu %d tours\n\n", duree_de_vie);
-    int score = duree_de_vie;
-    aff_score(score);
-
-    // BONUS
-    // int score = duree_de_vie;
-    // char answer1[2];
-    // char answer2[2];
-
-    // printf("Voulez vous rejouer (oui : y | non : n) ? ");
-    // scanf("%c", &answer1);
-    // if (answer1 == "y")
-    // {
-    //    int main();
-    // }
-    // else if (answer1 == "n")
-    // {
-    //     printf("Afficher les scores (oui : y | non : n) ? ");
-    //     scanf("%c",&answer2);
-    //     if (answer2 == "y")
-    //     {
-    //         aff_score(score);
-    //     }
-    //     else if (answer2 == "n")
-    //     {
-    //         printf("Merci d'avoir joué à Tamagoshi !");
-    //     }
-
-    // // }
-   
-
-
 
     return 0;
 }
+
