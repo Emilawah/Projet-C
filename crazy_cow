@@ -1,0 +1,320 @@
+#!/bin/bash
+
+score=0
+
+############ INTRODUCTION ##############
+
+clear
+echo " "
+echo "                          -------------------------------------------"
+echo "                          < Salut ! Veux-tu jouer à mon jeu ? (oui/non) >"
+echo "                  ^__^    -------------------------------------------"     
+echo "        _________/(00)      /"
+echo "    \/\(         /(__)     / "
+echo "       ||_w_____||"
+echo "       ||       ||" 
+
+read reponse 
+
+
+
+while [ "$reponse" != "oui" ] || [ "$reponse" != "non" ]
+do
+    if [ "$reponse" = "oui" ]
+    then
+        clear
+        echo "                          -----------------------------------------------------------------------------"
+        echo "                          < Youpi ! Tu vas répondre au QCM. Essaie d'avoir le plus de points possible >"
+        echo "                  ^__^    -----------------------------------------------------------------------------"     
+        echo "        _________/(^^)      /"
+        echo "    \/\(         /(__)     / "
+        echo "       ||_w_____||"
+        echo "       ||       ||" 
+        echo " "
+        echo " "
+        sleep 4
+        break
+    elif [ "$reponse" = "non" ]
+    then
+        clear 
+        echo " "
+        echo Dommage à bientot
+        echo " "
+        echo " "
+        exit
+    fi
+    clear
+    echo " "
+    echo Merci de repondre par oui ou par non : 
+    read reponse
+    echo " "
+done
+
+
+
+######### QUESTION 1 #############
+
+clear
+echo "                          --------------------------"
+echo "                          < Question 1 : 6 + 3 = ? >"
+echo "                  ^__^    --------------------------"     
+echo "        _________/(00)      /                                              |▶"
+echo "    \/\(         /(__)     /                                               |"
+echo "       ||_w_____||                                                         |"
+echo "_______||_______||_________________________________________________________|___" 
+echo " "
+read reponse1
+echo " "
+
+if [ "$reponse1" = "9" ]
+then 
+    clear
+    echo "                          ---------"
+    echo "                          < Bravo >"
+    echo "                  ^__^    ---------"     
+    echo "        _________/(^^)      /                                              |▶"
+    echo "    \/\(         /(__)     /                                               |"
+    echo "       ||_w_____||                                                         |"
+    echo "_______||_______||_________________________________________________________|___"
+    echo " "
+    sleep 3
+    score=$(expr $score + 1)
+    echo $score
+else
+    clear
+    echo "                          ----------------------------------------------"
+    echo "                          < Ah zut ! Ce n'était pas la bonne réponse ! >"
+    echo "                  ^__^    ----------------------------------------------"     
+    echo "        _________/(◡◡)      /                                             |▶"
+    echo "    \/\(         /(__)      /                                              |"
+    echo "       ||_w_____||                                                         |"
+    echo "_______||_______||_________________________________________________________|___"
+    echo " "
+    sleep 3
+fi
+
+############# QUESTION 2 #############
+
+clear
+echo "                             ------------------------------------------"
+echo "                             < Question 2 : Capitale des Etats-Unis ? >"
+echo "                      ^__^   ------------------------------------------"     
+echo "            _________/(00)      /                                              |▶"
+echo "        \/\(         /(__)     /                                               |"
+echo "           ||_w_____||                                                         |"
+echo "___________||_______||_________________________________________________________|___" 
+echo " "
+read reponse2
+echo " "
+
+if [ "$reponse2" = "Washington" -o "$reponse2" = "washington" ]
+then
+    clear
+    echo "                              ---------------"
+    echo "                              < Tu es bon ! >"
+    echo "                      ^__^    ---------------"     
+    echo "            _________/(^^)      /                                          |▶"
+    echo "        \/\(         /(__)     /                                           |"
+    echo "           ||_w_____||                                                     |"
+    echo "___________||_______||_____________________________________________________|___"
+    echo " "
+    sleep 3
+    score=$(expr $score + 1)
+else
+    clear
+    echo "                              -------------------------------------"
+    echo "                              < Oh mince c'était pas du tout ça ! >"
+    echo "                      ^__^    -------------------------------------"     
+    echo "            _________/(◡◡)      /                                         |▶"
+    echo "        \/\(         /(__)      /                                          |"
+    echo "           ||_w_____||                                                     |"
+    echo "___________||_______||_____________________________________________________|___"
+    echo " "
+    sleep 3
+fi
+
+############ QUESTION 3 ###############
+
+clear
+echo "                             -----------------------------------------------" 
+echo "                             <  Question 3 : Formule chimique du méthane ? >"
+echo "                             -----------------------------------------------"
+echo "                                  ^__^       /" 
+echo "                        _________/(00)      /                                  |▶"
+echo "                    \/\(         /(__)     /                                   |"
+echo "                       ||_w_____||                                             |"
+echo "_______________________||_______||_____________________________________________|___" 
+echo " "
+read reponse3
+echo " "
+
+if [ "$reponse3" = "CH4" -o "$reponse3" = "ch4" ]
+then
+    clear
+    echo "                       ----------------------------------------------------------" 
+    echo "                       <  Mais dit donc ne serais-tu pas en train de tricher ?? >"
+    echo "                       ----------------------------------------------------------"
+    echo "                                  ^__^       /"  
+    echo "                        _________/(^^)      /                                  |▶"
+    echo "                    \/\(         /(__)     /                                   |"
+    echo "                       ||_w_____||                                             |"
+    echo "_______________________||_______||_____________________________________________|___" 
+    echo " "
+    sleep 3
+    score=$(expr $score + 1)
+else
+    clear
+    echo "                       ---------------------------------------------" 
+    echo "                       < Bah non, tu devrais apprendre ton cours ! >"
+    echo "                       ---------------------------------------------"
+    echo "                                  ^__^       /"  
+    echo "                        _________/(◡◡)     /                                  |▶"
+    echo "                    \/\(         /(__)     /                                   |"
+    echo "                       ||_w_____||                                             |"
+    echo "_______________________||_______||_____________________________________________|___" 
+    echo " "
+    sleep 3
+fi
+
+###############  QUESTION 4 ##################
+
+clear
+echo "      ---------------------------------------------------------------" 
+echo "      < ? (elugriv al serpa serffihc 5) ip ed eruticrE : 4 noitseuQ >"
+echo "      ---------------------------------------------------------------"
+echo "                                                  ^__^       /"        
+echo "                                        _________/(00)      /                  |▶"
+echo "                                    \/\(         /(__)     /                   |"
+echo "                                        ||_w_____||                            |"
+echo "________________________________________||_______||____________________________|___" 
+echo " "
+read reponse4
+echo " "
+
+if [ "$reponse4" = "95141.3" ]
+then
+    clear
+    echo "                                      ---------------------------" 
+    echo "                                      < ! ezèlab tnemmiarv se'T >"
+    echo "                                      ---------------------------"
+    echo "                                                  ^__^       /"  
+    echo "                                        _________/(^^)      /                  |▶"
+    echo "                                    \/\(         /(__)     /                   |"
+    echo "                                        ||_w_____||                            |"
+    echo "________________________________________||_______||____________________________|___" 
+    echo " "
+    sleep 3
+    score=$(expr $score + 1)
+
+else 
+clear
+    echo "                                      ------------------------------" 
+    echo "                                      < ? iouq uo shtam ne nob saP >"
+    echo "                                      ------------------------------"
+    echo "                                                  ^__^       /" 
+    echo "                                        _________/(◡◡)     /                  |▶"
+    echo "                                    \/\(         /(__)     /                   |"
+    echo "                                        ||_w_____||                            |"
+    echo "________________________________________||_______||____________________________|___" 
+    echo " "
+    sleep 3
+fi
+
+############# QUESTION 5 ####################
+
+clear
+echo "      ----------------------------------------------------------------------------" 
+echo "      <              (e^2.579)                                                   >"
+echo "      < Question 5:  --------- x 78cos(2π) - 5tan(1/√2+8)   (arrondi à l'entier) >" 
+echo "      <              ln(12+58)                                                   >"
+echo "      ----------------------------------------------------------------------------"
+echo "                                                  \               ^__^"        
+echo "                                                   \    _________/(00)         |▶"
+echo "                                                    \/\(         /(__)         |"
+echo "                                                        ||_w_____||            |"
+echo "________________________________________________________||_______||____________|___" 
+echo " "
+read reponse5
+echo " "
+
+if [ "$reponse5" = "242" ]
+then
+    clear
+    echo "      ----------------------------------------------------------------------------" 
+    echo "      <                                                                          >"
+    echo "      <          MERCI          LA          C A L C U L A T R I C E         !    >" 
+    echo "      <                                                                          >"
+    echo "      ----------------------------------------------------------------------------"
+    echo "                                                  \               ^__^"        
+    echo "                                                   \    _________/(^^)         |▶"
+    echo "                                                    \/\(         /(__)         |"
+    echo "                                                        ||_w_____||            |"
+    echo "________________________________________________________||_______||____________|___" 
+    echo " "
+    sleep 3
+    score=$(expr $score + 1)
+else
+clear
+echo "      ----------------------------------------------------------------------------" 
+echo "      <                                                                          >"
+echo "      <      ALORS   TU  DISAIS   QUE   LA   QUESTION   1   ETAIT   FACILE ??    >" 
+echo "      <                                                                          >"
+echo "      ----------------------------------------------------------------------------"
+echo "                                                  \               ^__^"        
+echo "                                                   \    _________/(◡◡)        |▶"
+echo "                                                    \/\(         /(__)         |"
+echo "                                                        ||_w_____||            |"
+echo "________________________________________________________||_______||____________|___" 
+echo " "
+sleep 3
+fi
+
+clear
+echo "                                                                                            ---------"
+echo "                                                                                            <  OH ! >"
+echo "                                                                                     ^__^   ---------"        
+echo "                                                                          _____|▶___/(00)    /"
+echo "                                                                      \/\(          /(_o)    /"
+echo "                                                                         ||__w_____||"
+echo "_________________________________________________________________________||____|___||" 
+echo " "
+sleep 5
+
+############## AFFICHAGE BONUS DU SCORE """"""""""""""""
+
+#affichage d'un dragon si 5/5
+if [ $score -eq 5 ]
+then 
+clear
+cowsay -f dragon Ton score : $score / 5
+echo " "
+# affichage d'un dinausaure
+elif [ $score -eq 4 ]
+then
+clear
+cowsay -f stegosaurus Ton score : $score / 5
+echo " "
+# affichage d'une tortue
+elif [ $score -eq 3 ]
+then
+clear
+cowsay -f turtle Ton score : $score / 5
+echo " "
+# afichage d'un elephant
+elif [ $score -eq 2 ]
+then
+clear
+cowsay -f elephant Ton score : $score / 5
+echo " "
+# affichage d'un cerf
+elif [ $score -eq 1 ]
+then
+clear
+cowsay -f moose Ton score : $score / 5
+echo " "
+elif [ $score -eq 0 ]
+then
+clear
+cowsay -f duck Ton score : $score / 5
+echo " "
+fi
